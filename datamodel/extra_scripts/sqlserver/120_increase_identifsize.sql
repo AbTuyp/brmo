@@ -1,6 +1,6 @@
-drop constraint ander_btnlnds_niet_nat_prs_pk;
-drop constraint fk_ann_sc;
-drop constraint ander_nat_prs_pk;
+alter table ander_btnlnds_niet_nat_prs drop constraint ander_btnlnds_niet_nat_prs_pk;
+alter table ander_btnlnds_niet_nat_prs drop constraint fk_ann_sc;
+alter table ander_nat_prs drop constraint ander_nat_prs_pk;
 
 alter table ander_btnlnds_niet_nat_prs alter column sc_identif varchar(255) not null;
 alter table ander_nat_prs alter column sc_identif varchar(255) not null;
