@@ -1,5 +1,10 @@
-alter table ander_btnlnds_niet_nat_prs alter column sc_identif varchar(255);
-alter table ander_nat_prs alter column sc_identif varchar(255);
+drop constraint ander_btnlnds_niet_nat_prs_pk;
+drop constraint fk_ann_sc;
+drop constraint ander_nat_prs_pk;
+
+alter table ander_btnlnds_niet_nat_prs alter column sc_identif varchar(255) not null;
+alter table ander_nat_prs alter column sc_identif varchar(255) not null;
+
 alter table app_re alter column fk_2nnp_sc_identif varchar(255);
 alter table ingeschr_niet_nat_prs alter column sc_identif varchar(255);
 alter table ingeschr_nat_prs alter column sc_identif varchar(255);
@@ -24,5 +29,9 @@ alter table ouder_kind_rel alter column fk_sc_lh_inp_sc_identif varchar(255);
 alter table ouder_kind_rel alter column fk_sc_rh_inp_sc_identif varchar(255);
 alter table rsdoc_ingeschr_nat_prs alter column fk_nn_rh_inp_sc_identif varchar(255);
 alter table vestg_benoemd_obj alter column fk_nn_lh_ves_sc_identif varchar(255);
+
+alter table ander_btnlnds_niet_nat_prs add constraint ander_btnlnds_niet_nat_prs_pk primary key clustered(sc_identif);
+alter table ander_btnlnds_niet_nat_prs add constraint fk_ann_sc foreign key (sc_identif) references niet_nat_prs (sc_identif) on delete no action;
+alter table ander_nat_prs add constraint ander_nat_prs_pk primary key clustered(sc_identif);
 
 GO
